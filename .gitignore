@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+.venv/
+
+# Node
+mobile2/node_modules/
+mobile2/.expo/
+mobile2/dist/
+
+# Local config (contains your network IP — copy from constants.example.js)
+mobile2/constants.js
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Downloads (torrent data)
+TorMus_downloads/
