@@ -1,70 +1,135 @@
-# TorMus — Business & Product Plan
+# TorMus — Бизнес-план
 
-## What it is
+## Что это
 
-TorMus is a personal music server + mobile player.
-You own the server, you control the library. No subscriptions, no censorship, no takedowns.
+TorMus — музыкальный стриминговый сервис на базе торрентов.
+Пользователь открывает Telegram, ищет любой альбом, нажимает Play — и слушает.
+Без подписок на каждый сервис, без цензуры, без региональных блокировок.
 
-## Target user
+---
 
-- Listens to music that mainstream platforms remove or restrict
-  (explicit versions, regional blocks, underground labels, niche genres)
-- Wants lossless / high-bitrate audio without paying per-album
-- Technically comfortable enough to run a home server
+## Проблема
 
-## Competitive analysis
+Существующие стриминговые сервисы (Spotify, Apple Music, Яндекс Музыка) имеют общие ограничения:
+- Удаляют треки по требованию правообладателей
+- Блокируют нецензурные и политически чувствительные материалы
+- Не доступны или ограничены в ряде стран
+- Требуют постоянной подписки (~500–1000 ₽/мес)
+- Не поддерживают редкие жанры, андеграунд, старые альбомы
 
-| | Spotify | Apple Music | YouTube Music | TorMus |
+---
+
+## Решение
+
+Сервис, который ищет музыку по торрент-трекерам, скачивает на сервер и стримит пользователю прямо в Telegram. Работает как Spotify, но без цензуры и с общей библиотекой — если кто-то уже скачал альбом, он доступен всем.
+
+---
+
+## Целевая аудитория
+
+**Фаза 1 — Свои (0–100 чел.):**
+- Меломаны, которым нужен нецензурированный контент
+- Слушатели редких жанров (металл, рэп, классика без сокращений)
+- Люди в странах без нормального стриминга
+
+**Фаза 2 — Рост (100–10 000 чел.):**
+- Пользователи Telegram, уставшие от нескольких подписок
+- Те, кто хочет FLAC без доплаты
+
+**Фаза 3 — Масштаб (10 000+):**
+- Широкая аудитория, которой нужна альтернатива мейнстримовым сервисам
+
+---
+
+## Конкурентный анализ
+
+| | Spotify | Apple Music | Яндекс Музыка | TorMus |
 |--|---------|------------|--------------|--------|
-| Price | $11/mo | $11/mo | $11/mo | $0 |
-| Explicit/banned albums | ❌ often removed | ❌ | partial | ✅ |
-| FLAC quality | ❌ | ✅ (lossless) | ❌ | ✅ (source) |
-| Any torrent ever released | ❌ | ❌ | ❌ | ✅ |
-| Works offline | ✅ | ✅ | ✅ | ❌ (streams) |
-| Easy setup | ✅ | ✅ | ✅ | ❌ (server needed) |
-| Legal | ✅ | ✅ | ✅ | ⚠️ gray area |
+| Цена | 200 ₽/мес | 300 ₽/мес | 250 ₽/мес | 100–200 ₽/мес |
+| Нецензурный контент | ❌ частично | ❌ | ❌ | ✅ всё |
+| FLAC качество | ❌ | ✅ | ✅ платно | ✅ |
+| Любой альбом из интернета | ❌ | ❌ | ❌ | ✅ |
+| Telegram интеграция | ❌ | ❌ | ❌ | ✅ нативно |
+| Работает без VPN в РФ | ❌ Spotify | ✅ | ✅ | ✅ |
 
-## Unique value
+---
 
-1. **No censorship** — if it exists on a torrent, you can play it
-2. **Cost** — zero after hardware
-3. **Ownership** — your server, your files, no one pulls the library
+## Уникальное преимущество
 
-## Legal position
+1. **Нет цензуры** — если альбом существует в природе, его можно послушать
+2. **Общая библиотека** — скачал один пользователь, доступно всем
+3. **Telegram** — не нужно устанавливать отдельное приложение, работает везде
+4. **Цена** — дешевле любого конкурента
 
-TorMus itself is a streaming interface — similar to Plex or Jellyfin.
-Downloading copyrighted material via torrents is **illegal in most countries**.
-This is a personal-use tool. Do not distribute or monetize.
+---
 
-## Realistic roadmap
+## Монетизация
 
-### Now (MVP — done)
-- [x] Search PirateBay
-- [x] Download via qBittorrent
-- [x] Stream to iPhone via expo-av
-- [x] FLAC/MP3/OGG/M4A support
-- [x] Basic player (play/pause/skip/seek)
-- [x] Background playback
+**Telegram Stars** — встроенная платёжная система Telegram (без банков и эквайринга).
 
-### Short term
-- [ ] Album art (MusicBrainz lookup by torrent name)
-- [ ] Lossless FLAC streaming option
-- [ ] Multiple search sources (1337x, Rutracker)
-- [ ] Standalone iOS app (no Expo Go)
+| Тариф | Цена | Что даёт |
+|-------|------|---------|
+| Бесплатный | 0 | 5 поисков в день, очередь скачивания |
+| Базовый | 99 ₽/мес | Безлимит поиска и скачивания |
+| Премиум | 199 ₽/мес | FLAC стриминг, приоритетная очередь |
 
-### Long term
-- [ ] Remote access without VPN (Tailscale integration)
-- [ ] Android support
-- [ ] Offline cache on phone
-- [ ] Multiple users (family server)
+**Экономика при 1 000 подписчиков (базовый):**
+- Доход: 1 000 × 99 ₽ = 99 000 ₽/мес
+- Сервер (2 VPS + хранилище): ~5 000 ₽/мес
+- Прибыль: ~94 000 ₽/мес
 
-## Infrastructure cost
+**При 10 000 подписчиков:**
+- Доход: ~990 000 ₽/мес
+- Инфраструктура (кластер + CDN): ~50 000 ₽/мес
+- Прибыль: ~940 000 ₽/мес
 
-| Item | Cost |
-|------|------|
-| Old laptop/mini PC as server | one-time ~$0-200 |
-| Electricity (~30W always-on) | ~$3/month |
-| Internet | already paying |
-| **Total** | **~$3/month** |
+---
 
-vs Spotify/Apple Music: $11/month = $132/year saved.
+## Правовая позиция
+
+TorMus как платформа аналогичен Plex или Jellyfin — это интерфейс для стриминга.
+Ответственность за контент лежит на пользователе, который инициирует скачивание.
+**Для коммерческого запуска рекомендуется:** юрисдикция с мягким копирайт-законодательством (Сейшелы, ОАЭ, Швейцария) и пользовательское соглашение с отказом от ответственности.
+
+---
+
+## Дорожная карта
+
+### ✅ Сделано (MVP)
+- Поиск по PirateBay
+- Скачивание через qBittorrent
+- Стриминг MP3/FLAC через ffmpeg
+- iOS приложение (Expo)
+- Telegram Mini App + бот
+- Плеер с очередью, перемоткой, фоновым воспроизведением
+
+### 🔜 Ближайший спринт
+- [ ] Деплой на VPS (Docker)
+- [ ] HTTPS + домен
+- [ ] Авторизация через Telegram (проверка initData)
+- [ ] Обложки альбомов (MusicBrainz API)
+- [ ] Поиск по нескольким источникам (Rutracker, 1337x)
+
+### 📅 Средний срок
+- [ ] Система подписок через Telegram Stars
+- [ ] FLAC стриминг без перекодирования
+- [ ] Кэш на устройстве (оффлайн)
+- [ ] Плейлисты и избранное
+- [ ] Android PWA
+
+### 🚀 Масштаб
+- [ ] Мультисерверная архитектура
+- [ ] CDN для популярных треков
+- [ ] Рекомендации на основе истории
+- [ ] API для сторонних клиентов
+
+---
+
+## Инфраструктура
+
+| Этап | Сервер | Хранилище | Стоимость |
+|------|--------|-----------|-----------|
+| 0–100 польз. | 1× VPS CX22 | 200 ГБ | ~900 ₽/мес |
+| 100–1000 | 1× VPS CX32 | 1 ТБ | ~3 000 ₽/мес |
+| 1000–10000 | 2× VPS CCX13 | 5 ТБ | ~15 000 ₽/мес |
+| 10000+ | Кластер | Object Storage | обсуждается |
