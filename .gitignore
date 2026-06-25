@@ -20,3 +20,5 @@ Thumbs.db
 
 # Downloads (torrent data)
 TorMus_downloads/
+webapp/node_modules/
+webapp/dist/
