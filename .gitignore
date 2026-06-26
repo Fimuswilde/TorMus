@@ -22,3 +22,9 @@ Thumbs.db
 TorMus_downloads/
 webapp/node_modules/
 webapp/dist/
+
+# Claude memory (local only)
+.claude/
+
+# Temp scripts with credentials
+ssh_audit*.py
